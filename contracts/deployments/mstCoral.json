@@ -1,0 +1,12 @@
+{
+  "network": "mstCoral",
+  "chainId": 54635,
+  "registry": "0x80874E46ba60Bb27e4d885a6bb84e825e3Bc6d7D",
+  "deployBlock": "489237",
+  "deployTx": "0xacf848080de62a3dfdeafa51964547092d0c4a1a6a79f095b310ef2322f35677",
+  "deployer": "0xfc30b550b575e58eb53964c720181b80db3a8507",
+  "treasury": "0xfc30b550b575e58eb53964c720181b80db3a8507",
+  "minBondWei": "10000000000000000",
+  "deployedAt": "2026-11-02T17:10:40.053Z",
+  "explorer": "https://coral.mstscan.com/address/0x80874E46ba60Bb27e4d885a6bb84e825e3Bc6d7D"
+}

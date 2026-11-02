@@ -1,0 +1,95 @@
+{
+  "network": "mstCoral",
+  "chainId": 54635,
+  "registry": "0x80874E46ba60Bb27e4d885a6bb84e825e3Bc6d7D",
+  "drawId": "1",
+  "ranAt": "2026-11-02T17:13:09.727Z",
+  "entries": [
+    "0x10bc4438ec493df4a176aa2cfb9373a4637ef465b2706ec3efbb28cf1da116a8",
+    "0x130a4cb92e3688175609e1f6115e3478414cb8666a67ebc94ea95cc1024cfcc1",
+    "0x1ab2ee54d3531d962604bff62f188bf34f1ec20fa70cf21042648ff0aab892f7",
+    "0x1ac7d1e0a992cee53a1a6008a259689899fde2fe913d3e6adc4c9c4d22918a7f",
+    "0x388f396c3ed81ae4b8ed1c335b0ac0d8a7e1ddc83186caab1065b1ca4cee5d03",
+    "0x408c7d388c7b95beae2eb06541f6f0ee4a3b02f043ef11e0a2fab9cca8b1da9d",
+    "0x4a511220dbaef3d2dee3ccb9678bcd3da472199af83991e6bfd60f7c0651914a",
+    "0x54d2e4e67d820ae686c8e4877614725ebb022f641e05da41c8944a92211d460f",
+    "0x5d0c6a75a395b53046c45af98c6a436ebb7896fac24be6efcf0f86953b2c0ce0",
+    "0x6e91058da310e23905772836c6db73e87a616a8d8a1d944ed82cf23ff284dc3a",
+    "0x7d09d2a0744aef87b33b5476d078526b736011295347233c7dc94fcdfb70faf8",
+    "0x836b69db0db1ddb389a72382c040e141308c0410d08bc9385fa4db2637ca7834",
+    "0x8e66fa2d70154ef190452e438bf8939ca6f2ea5c9d6cbe6562ed622fdcb9d874",
+    "0x9d87bdb0c2faedb0fdf9e3867ede20625644525379826b70afecd09c9e04d10c",
+    "0xae9d45d97abba70b76eb04a15f60b3f78ab1c0a41f96db870f0466f097eaa320",
+    "0xdbc7818e3d252a3531de0d42742405a5e7e019fe4cef5ca26e7dcb5b2fb35d21",
+    "0xe1a4c5d8c86738248443983a0595b7f18be14f71039f701361eb0cb9411f6470",
+    "0xeb864f0e1e3d4f5f0e0faf3d46109fefc00915cd2d370c7b0c71e15d2ae17314",
+    "0xf55778c91bf64caf27080bb19f687ece0091605203012f7e3e12429deed90092",
+    "0xf8feb6edfda1ddf9ef95a8987364afa8827a8f9a88ab477ce9407ae60a994662"
+  ],
+  "winners": [
+    {
+      "entryHash": "0x408c7d388c7b95beae2eb06541f6f0ee4a3b02f043ef11e0a2fab9cca8b1da9d",
+      "score": "937020768294703830214954261997569600531571855921412601311504599159587011047"
+    },
+    {
+      "entryHash": "0x8e66fa2d70154ef190452e438bf8939ca6f2ea5c9d6cbe6562ed622fdcb9d874",
+      "score": "4383871107580500258804024863871279736364588272156983110742718708461121768935"
+    },
+    {
+      "entryHash": "0x7d09d2a0744aef87b33b5476d078526b736011295347233c7dc94fcdfb70faf8",
+      "score": "8136041846632461578887761566526943228181086240529881558134490299657521834881"
+    }
+  ],
+  "verification": [
+    {
+      "name": "entries",
+      "ok": true,
+      "detail": "Published list of 20 entries matches the on-chain entries root"
+    },
+    {
+      "name": "commitment",
+      "ok": true,
+      "detail": "Revealed secret matches the commitment made at creation"
+    },
+    {
+      "name": "seed",
+      "ok": true,
+      "detail": "Seed = hash(draw, secret, block 489282 hash)"
+    },
+    {
+      "name": "result",
+      "ok": true,
+      "detail": "Independent recomputation gives the same 3 winners and cutoff"
+    }
+  ],
+  "transactions": [
+    {
+      "step": "createDraw",
+      "hash": "0x9aad6900043a586e6382e0c4ce3414835a0cc8d715993ea61910d6f0d9c53ff8",
+      "block": "489277",
+      "gasUsed": "159135",
+      "link": "https://coral.mstscan.com/tx/0x9aad6900043a586e6382e0c4ce3414835a0cc8d715993ea61910d6f0d9c53ff8"
+    },
+    {
+      "step": "closeEntries",
+      "hash": "0xa4586344d9a75639dc50d85f34673edb87007192b22362e55491382ef334a8dd",
+      "block": "489279",
+      "gasUsed": "57441",
+      "link": "https://coral.mstscan.com/tx/0xa4586344d9a75639dc50d85f34673edb87007192b22362e55491382ef334a8dd"
+    },
+    {
+      "step": "reveal",
+      "hash": "0x95b6a95f2297032bc36baa18cfc339d9cd91b1176d5fdf624d52623737c1e3c9",
+      "block": "489284",
+      "gasUsed": "56664",
+      "link": "https://coral.mstscan.com/tx/0x95b6a95f2297032bc36baa18cfc339d9cd91b1176d5fdf624d52623737c1e3c9"
+    },
+    {
+      "step": "publishResult",
+      "hash": "0x4969a5a2d7800435c035a8aa9cf7f5341f42a768bfac1fc9f17ec407d50289b9",
+      "block": "489286",
+      "gasUsed": "80777",
+      "link": "https://coral.mstscan.com/tx/0x4969a5a2d7800435c035a8aa9cf7f5341f42a768bfac1fc9f17ec407d50289b9"
+    }
+  ]
+}
