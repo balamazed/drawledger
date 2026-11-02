@@ -1,5 +1,7 @@
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from "fs";
 import path from "path";
+import type { HardhatRuntimeEnvironment } from "hardhat/types";
+import { chainById } from "@drawledger/core";
 
 export const deploymentsDir = path.join(__dirname, "../deployments");
 
@@ -31,4 +33,14 @@ export interface Deployment {
   minBondWei: string;
   deployedAt: string;
   explorer: string | null;
+}
+
+// hardhat-viem only knows chains bundled with viem, so MST's chain is passed in explicitly
+export async function mstClients(hre: HardhatRuntimeEnvironment) {
+  const configured = hre.network.config.chainId;
+  const known = configured !== undefined ? chainById(configured) : undefined;
+  const opts = known && configured !== 31337 ? { chain: known } : {};
+  const publicClient = await hre.viem.getPublicClient(opts);
+  const wallets = await hre.viem.getWalletClients(opts);
+  return { publicClient, wallets, opts };
 }

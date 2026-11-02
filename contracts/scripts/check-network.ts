@@ -1,8 +1,9 @@
 import hre from "hardhat";
+import { mstClients } from "./lib";
 
 // Prints live network facts so chain parameters are verified, never assumed
 async function main() {
-  const client = await hre.viem.getPublicClient();
+  const { publicClient: client } = await mstClients(hre);
   const [chainId, block, gasPrice] = await Promise.all([client.getChainId(), client.getBlock(), client.getGasPrice()]);
   const configured = hre.network.config.chainId;
   console.log(JSON.stringify({

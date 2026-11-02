@@ -1,11 +1,11 @@
 import hre from "hardhat";
 import { parseEther } from "viem";
-import { explorerBase, saveJson, type Deployment } from "./lib";
+import { explorerBase, mstClients, saveJson, type Deployment } from "./lib";
 
 async function main() {
-  const [deployer] = await hre.viem.getWalletClients();
+  const { publicClient: client, wallets } = await mstClients(hre);
+  const [deployer] = wallets;
   if (!deployer) throw new Error("Set DEPLOYER_PRIVATE_KEY in contracts/.env");
-  const client = await hre.viem.getPublicClient();
   const chainId = await client.getChainId();
   const minBond = parseEther(process.env.MIN_BOND_MSTC || "0.01");
   const treasury = (process.env.TREASURY_ADDRESS || deployer.account.address) as `0x${string}`;
@@ -14,7 +14,9 @@ async function main() {
   console.log(`Deployer ${deployer.account.address} on chain ${chainId}, balance ${balance} wei`);
   if (balance === 0n) throw new Error("Deployer has no balance; fund it from the faucet first");
 
-  const { contract, deploymentTransaction } = await hre.viem.sendDeploymentTransaction("DrawRegistry", [minBond, treasury]);
+  const { contract, deploymentTransaction } = await hre.viem.sendDeploymentTransaction("DrawRegistry", [minBond, treasury], {
+    client: { public: client, wallet: deployer },
+  });
   const receipt = await client.waitForTransactionReceipt({ hash: deploymentTransaction.hash });
   const explorer = explorerBase(chainId);
 

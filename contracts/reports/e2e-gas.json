@@ -2,19 +2,19 @@
   "25x5": {
     "closeEntries": "57441",
     "reveal": "56664",
-    "publishResult": "80753",
+    "publishResult": "80765",
     "finalize": "54540"
   },
   "1000x50": {
     "closeEntries": "57453",
     "reveal": "56664",
-    "publishResult": "80777",
+    "publishResult": "80765",
     "finalize": "54540",
-    "challengeExcludedEntry": "94144"
+    "challengeExcludedEntry": "94178"
   },
   "5000x100": {
-    "closeEntries": "57453",
-    "reveal": "56664",
+    "closeEntries": "57441",
+    "reveal": "56652",
     "publishResult": "80777",
     "finalize": "54540"
   }

@@ -11,15 +11,15 @@ import {
   readReveal,
   verifyDraw,
 } from "@drawledger/core";
-import { explorerBase, loadJson, saveJson, type Deployment } from "./lib";
+import { explorerBase, loadJson, mstClients, saveJson, type Deployment } from "./lib";
 
 // Runs one real draw against the deployed registry and records every transaction hash
 async function main() {
   const deployment = loadJson<Deployment>(`${hre.network.name}.json`);
   if (!deployment) throw new Error(`No deployments/${hre.network.name}.json; run the deploy script first`);
-  const [operator] = await hre.viem.getWalletClients();
-  const client = await hre.viem.getPublicClient();
-  const registry = await hre.viem.getContractAt("DrawRegistry", deployment.registry);
+  const { publicClient: client, wallets } = await mstClients(hre);
+  const [operator] = wallets;
+  const registry = await hre.viem.getContractAt("DrawRegistry", deployment.registry, { client: { public: client, wallet: operator } });
   const explorer = explorerBase(deployment.chainId);
   const txs: { step: string; hash: Hex; block: string; gasUsed: string; link: string | null }[] = [];
 
