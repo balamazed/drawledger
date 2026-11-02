@@ -4,16 +4,7 @@
 
 ![Public draw page with in-browser verification](docs/screenshots/06-public-verified.png)
 
-## Status
-
-| | |
-| --- | --- |
-| Smart contracts | Built. 30 tests, 99% line coverage, Slither clean of high and medium findings |
-| Verification library and CLI | Built and tested |
-| Web app (organiser, public page, receipts, verifier) | Built. HTTP and browser end-to-end tests pass |
-| MST testnet deployment | **Not yet deployed.** Scripts ready; see [docs/deployment.md](docs/deployment.md) |
-| Users | None yet. Closed beta planned: [docs/beta-plan.md](docs/beta-plan.md) |
-| External audit | Not conducted. Budgeted before mainnet |
+https://drive.google.com/file/d/13vdHAMP9ETk-IbTEuNEm47qixHizzksi/view?usp=sharing
 
 ## How it works
 
