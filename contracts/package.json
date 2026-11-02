@@ -1,0 +1,32 @@
+{
+  "name": "@drawledger/contracts",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test test/DrawRegistry.test.ts test/edge.test.ts",
+    "e2e": "hardhat test test/e2e.protocol.test.ts",
+    "coverage": "SOLIDITY_COVERAGE=true hardhat coverage --testfiles \"test/{DrawRegistry,edge}.test.ts\"",
+    "deploy:coral": "hardhat run scripts/deploy.ts --network mstCoral",
+    "deploy:testnet": "hardhat run scripts/deploy.ts --network mstTestnet",
+    "smoke:coral": "hardhat run scripts/smoke.ts --network mstCoral",
+    "smoke:testnet": "hardhat run scripts/smoke.ts --network mstTestnet",
+    "check-network": "hardhat run scripts/check-network.ts",
+    "export-abi": "hardhat compile && ts-node scripts/export-abi.ts"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox-viem": "^3.0.0",
+    "@nomicfoundation/hardhat-viem": "^2.1.5",
+    "@openzeppelin/contracts": "^5.6.1",
+    "@types/chai": "^4.3.20",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^26.6.6",
+    "chai": "^4.5.0",
+    "dotenv": "^18.0.9",
+    "hardhat": "^2.29.1",
+    "solc": "^0.8.24",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "viem": "^2.57.14"
+  }
+}

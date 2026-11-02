@@ -1,0 +1,19 @@
+INFO:Detectors:
+Detector: timestamp
+DrawRegistry.finalize(uint256) (contracts/DrawRegistry.sol#204-212) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp <= d.challengeDeadline (contracts/DrawRegistry.sol#207)
+DrawRegistry._challengeable(uint256) (contracts/DrawRegistry.sol#363-367) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp > d.challengeDeadline (contracts/DrawRegistry.sol#366)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Detector: cyclomatic-complexity
+DrawRegistry.challengeExcludedEntry(uint256,DrawRegistry.EntryProof,bool,DrawRegistry.WinnerProof,bool,DrawRegistry.WinnerProof) (contracts/DrawRegistry.sol#227-259) has a high cyclomatic complexity (12).
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cyclomatic-complexity
+INFO:Detectors:
+Detector: low-level-calls
+Low level call in DrawRegistry.withdraw() (contracts/DrawRegistry.sol#214-221):
+	- (ok,None) = msg.sender.call{value: amount}() (contracts/DrawRegistry.sol#218)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Slither:. analyzed (4 contracts with 102 detectors), 4 result(s) found

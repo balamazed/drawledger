@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Core, contracts and protocol end-to-end tests
+        run: npm test
+      - name: Contract coverage
+        run: npm run coverage -w @drawledger/contracts
+      - name: Web typecheck and production build
+        run: npm run typecheck -w @drawledger/web && npm run build -w @drawledger/web
+        env:
+          NEXT_PUBLIC_CHAIN_ID: "54635"
+          NEXT_PUBLIC_RPC_URL: https://coralrpc.mstblockchain.com
+
+  slither:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run compile -w @drawledger/contracts
+      - run: pip install slither-analyzer
+      - name: Slither (fails on medium or high)
+        working-directory: contracts
+        run: slither . --hardhat-ignore-compile --filter-paths node_modules --fail-medium

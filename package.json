@@ -1,0 +1,22 @@
+{
+  "name": "drawledger",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Provably fair allocation draws on MST Blockchain",
+  "workspaces": [
+    "packages/core",
+    "contracts",
+    "apps/web"
+  ],
+  "scripts": {
+    "build:core": "npm run build -w @drawledger/core",
+    "test:core": "npm test -w @drawledger/core",
+    "test:contracts": "npm test -w @drawledger/contracts",
+    "test:e2e": "npm run e2e -w @drawledger/contracts",
+    "dev": "npm run dev -w @drawledger/web",
+    "test": "npm run build:core && npm run test:core && npm run test:contracts && npm run test:e2e"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

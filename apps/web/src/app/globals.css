@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f6f4ee;
+  --color-card: #ffffff;
+  --color-ink: #16181a;
+  --color-muted: #5d6166;
+  --color-line: #dedad0;
+  --color-accent: #0e6b50;
+  --color-accent-soft: #e2f0ea;
+  --color-warn: #9a5b00;
+  --color-warn-soft: #fbf0dc;
+  --color-bad: #a3262a;
+  --color-bad-soft: #f8e3e3;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-paper: #121314;
+    --color-card: #1b1d1f;
+    --color-ink: #ecebe6;
+    --color-muted: #a2a5a9;
+    --color-line: #303336;
+    --color-accent: #4fc39a;
+    --color-accent-soft: #163329;
+    --color-warn: #e0a64a;
+    --color-warn-soft: #332713;
+    --color-bad: #f07a7d;
+    --color-bad-soft: #3a1c1d;
+  }
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-50;
+}
+@utility btn-primary {
+  @apply btn bg-accent text-white hover:brightness-110;
+}
+@utility btn-ghost {
+  @apply btn border border-line bg-card hover:bg-paper;
+}
+@utility card {
+  @apply rounded-lg border border-line bg-card p-5;
+}
+@utility input {
+  @apply w-full rounded-md border border-line bg-card px-3 py-2 text-sm outline-none focus:border-accent;
+}
+@utility label {
+  @apply mb-1 block text-sm font-medium;
+}
+@utility mono {
+  @apply font-mono text-xs break-all;
+}
