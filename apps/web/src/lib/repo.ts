@@ -116,7 +116,7 @@ export async function registerDraw(input: {
   await (await db()).query(
     `insert into draws (id, slug, chain_id, registry, onchain_id, operator, title, terms, metadata_hash, winner_count,
        public_signup, show_winner_labels, status, created_tx, created_block)
-     values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)
+     values ($1,$2,$3,$4,$5,$6,$7,$8::jsonb,$9,$10,$11,$12,$13,$14,$15)
      on conflict (chain_id, registry, onchain_id) do nothing`,
     [
       id,
@@ -158,7 +158,18 @@ export async function findDraw(by: { id?: string; slug?: string; onchainId?: big
 
 // int8 columns come back as numbers from PGlite and strings from postgres.js
 function normalize<T extends DrawRow>(row: T): T {
-  return { ...row, onchain_id: String(row.onchain_id), created_block: String(row.created_block) };
+  return {
+    ...row,
+    onchain_id: String(row.onchain_id),
+    created_block: String(row.created_block),
+    terms: parseJson(row.terms),
+    winners: parseJson(row.winners),
+  };
+}
+
+// postgres.js can return jsonb written as text parameters as strings; PGlite returns objects
+function parseJson<T>(value: T | string): T {
+  return typeof value === "string" ? (JSON.parse(value) as T) : value;
 }
 
 export async function listDraws(operator: Address) {
@@ -248,7 +259,7 @@ export async function prepareResult(draw: DrawRow) {
     throw new HttpError(409, "Stored entries do not match the on-chain entries root");
   }
   const result = computeResult(chain.seed, tree.sorted, chain.winnerCount);
-  await (await db()).query("update draws set winners = $2, winners_root = $3 where id = $1", [
+  await (await db()).query("update draws set winners = $2::jsonb, winners_root = $3 where id = $1", [
     draw.id,
     JSON.stringify(winnersToJson(result.winners)),
     result.root,
